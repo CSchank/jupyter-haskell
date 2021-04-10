@@ -476,7 +476,7 @@ endpoint :: Socket z t -> ZMQ z Port
 endpoint sock = do
   endpointString <- lastEndpoint sock
   case parsePort endpointString of
-    Nothing   -> fail "fatal error (Jupyter.ZeroMQ): could not parse port as integer."
+    Nothing   -> error "fatal error (Jupyter.ZeroMQ): could not parse port as integer."
     Just port -> return port
 
 -- | Try to parse the 'Port' from an address string along the lines of @"tcp://127.0.0.1:8829"@.
