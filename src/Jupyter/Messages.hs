@@ -314,6 +314,9 @@ instance IsMessage ClientRequest where
                                                               <*> o .: "pattern"
                                                               <*> o .: "unique")
           _ -> fail $ "Unknown history access type in hist_access_type: " ++ accessType
+          
+instance Semigroup DisplayData where
+   DisplayData map1 <> DisplayData map2 = DisplayData $ Map.unionWith (<>) map1 map2
 
 instance ToJSON ClientRequest where
   toJSON req =
