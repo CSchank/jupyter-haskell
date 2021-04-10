@@ -145,7 +145,7 @@ data ClientState = forall z.
 -- Use 'sendClientRequest' and 'sendClientComm' to construct 'Client' values, the 'Monad' interface to
 -- manipulate them, and 'runClient' to supply all needed connection info and run the action.
 newtype Client a = Client { unClient :: ReaderT ClientState IO a }
-  deriving (Functor, Applicative, Monad, MonadIO, MonadReader ClientState, MonadThrow, MonadCatch, MonadMask)
+  deriving (Functor, Applicative, Monad, MonadIO, MonadReader ClientState, MonadThrow, MonadCatch, MonadMask, MonadFail)
 
 -- | A connection to a kernel from a client.
 --
